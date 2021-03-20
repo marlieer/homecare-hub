@@ -38,6 +38,7 @@ class RegisteredUserController extends Controller
             'phone_number' => 'required|string|max:11',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
+            'user_type' => 'customer',
         ]);
 
         Auth::login($user = User::create([
@@ -46,6 +47,7 @@ class RegisteredUserController extends Controller
             'phone_number' => $request->phone_number,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'user_type' => 'customer',
         ]));
 
         event(new Registered($user));
