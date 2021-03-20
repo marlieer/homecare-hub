@@ -18,7 +18,7 @@ class CreateProductTransactionTable extends Migration
             $table->bigInteger('transaction_id');
             $table->bigInteger('product_id');
             $table->foreign('transaction_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }
