@@ -21,14 +21,14 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        $quantity = $this->faker->numberBetween(0,1000);
+        $quantity = $this->faker->numberBetween(0,10);
 
         return [
             'name' => $this->faker->unique()->word,
             'description' => $this->faker->sentence,
             'quantity' => $quantity,
             'status' => $quantity > 0 ? 'available' : 'out of stock',
-            'image' => $this->faker->image(),
+            'image' => $this->faker->image('storage/app/public/images',640,480, null, false),
         ];
     }
 }

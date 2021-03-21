@@ -31432,6 +31432,14 @@ select {
           animation: bounce 1s infinite;
 }
 
+.green-text {
+  color: darkgreen;
+}
+
+.red-text {
+  color: darkred;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
