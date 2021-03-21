@@ -30,9 +30,10 @@ class StoreTransaction extends FormRequest
         {
             $max = $product->quantity;
         }
+
         return [
-            'product_id' => 'exists:products,id',
-            'quantity' => "numeric|min:1|max:$max",
+            'product_id' => 'required|exists:products,id',
+            'quantity' => "required|numeric|min:1|max:$max",
         ];
     }
 }
