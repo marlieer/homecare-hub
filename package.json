@@ -25,5 +25,8 @@
         "postcss-import": "^12.0.1",
         "tailwindcss": "^2.0.2",
         "webpack-cli": "^4.5.0"
+    },
+    "optionalDependencies": {
+        "fsevents": "^1.2.7"
     }
 }
