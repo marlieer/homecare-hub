@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTransaction;
+use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -33,9 +36,22 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTransaction $request)
     {
-        //
+        $validated = $request->validated();
+        $transaction = new Transaction([
+            'products_id' => $validated['product_id'],
+            'users_id' => Auth::user()->id,
+            'quantity' => $validated['quantity'],
+        ]);
+        $transaction->save();
+        $product = Product::find($request->product_id);
+        if($transaction)
+        {
+            return response()->json("You purchased $request->quantity of $product->name");
+        } else {
+            return response()->json("Failed to make the purchase");
+        }
     }
 
     /**

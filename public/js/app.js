@@ -3811,12 +3811,13 @@ $(document).ready(function () {
     console.log(product_id);
     $.ajaxSetup({
       headers: {
-        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
-    }), $.ajax({
+    });
+    $.ajax({
       url: "/transaction",
       type: "POST",
-      async: true,
+      dataType: 'JSON',
       data: {
         'quantity': quantity,
         'product_id': product_id

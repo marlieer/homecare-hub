@@ -14,13 +14,13 @@ $(document).ready(function() {
 
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-        }),
+        });
         $.ajax({
             url: "/transaction",
             type: "POST",
-            async: true,
+            dataType: 'JSON',
             data: {
                 'quantity': quantity,
                 'product_id': product_id,
