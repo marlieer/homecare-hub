@@ -28,7 +28,9 @@ class ProductFactory extends Factory
             'description' => $this->faker->sentence,
             'quantity' => $quantity,
             'status' => $quantity > 0 ? 'available' : 'out of stock',
-            'image' => $this->faker->image('storage/app/public/images',640,480, null, false),
+            'image' => $this->faker->randomElement([
+                'headphones.jfif','flipflops.jpg','watch.jfif','camera.jpeg'
+                ])
         ];
     }
 }
