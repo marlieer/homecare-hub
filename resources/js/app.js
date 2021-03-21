@@ -12,6 +12,11 @@ $(document).ready(function() {
         console.log(quantity);
         console.log(product_id);
 
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            },
+        }),
         $.ajax({
             url: "/transaction",
             type: "POST",

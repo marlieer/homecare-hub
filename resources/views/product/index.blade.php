@@ -6,6 +6,7 @@
     </x-slot>
 
     <div class="py-12">
+        <meta name="_token" content="{{csrf_token()}}" />
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="row">
                 @foreach($products as $product)

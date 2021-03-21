@@ -3809,7 +3809,11 @@ $(document).ready(function () {
     console.log(e);
     console.log(quantity);
     console.log(product_id);
-    $.ajax({
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+      }
+    }), $.ajax({
       url: "/transaction",
       type: "POST",
       async: true,
