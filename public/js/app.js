@@ -3802,6 +3802,28 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
+$(document).ready(function () {
+  $("button#add-to-cart").on("click", function (e) {
+    var quantity = e.currentTarget.previousElementSibling.value;
+    var product_id = e.currentTarget.nextElementSibling.innerHTML;
+    console.log(e);
+    console.log(quantity);
+    console.log(product_id);
+    $.ajax({
+      url: "/transaction",
+      type: "POST",
+      async: true,
+      data: {
+        'quantity': quantity,
+        'product_id': product_id
+      },
+      success: function success(result) {
+        alert(result);
+      }
+    });
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

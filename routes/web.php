@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AddToCart;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +26,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group( function () {
     Route::resource('product', ProductController::class);
+    Route::resource('transaction', TransactionController::class);
 });
 
 require __DIR__.'/auth.php';

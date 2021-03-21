@@ -23,17 +23,17 @@
                                 @if($product->status == 'available')
                                     <input
                                         type="number"
-                                        id="quantity"
                                         class="d-inline w-25 form-control"
                                         value="1"
                                     min="0"
                                     max="{{ $product->quantity }}"/>
                                     <button class="btn btn-info"
-                                            type="button" id="add-to-cart">Add to Cart
+                                            type="button" id="add-to-cart">Buy Now
                                     </button>
+                                    <p class="hidden">{{ $product->id }}</p>
                                 @else
                                     <button class="btn btn-outline-dark disabled"
-                                            type="button" id="add-to-cart">Out of stock
+                                            type="button">Out of stock
                                     </button>
                                 @endif
                             </div>
