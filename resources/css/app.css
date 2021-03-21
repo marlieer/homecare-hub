@@ -9,3 +9,9 @@
 .red-text {
     color: darkred;
 }
+
+#alert-div {
+    position: fixed;
+    top: 80%;
+    right: 0;
+}

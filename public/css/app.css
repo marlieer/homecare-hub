@@ -31440,6 +31440,12 @@ select {
   color: darkred;
 }
 
+#alert-div {
+  position: fixed;
+  top: 80%;
+  right: 0;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
