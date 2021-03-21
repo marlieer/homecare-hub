@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 
 class User extends \Illuminate\Foundation\Auth\User
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'first_name',
@@ -14,7 +15,8 @@ class User extends \Illuminate\Foundation\Auth\User
         'email',
         'phone_number',
         'user_type',
-        'password'
+        'password',
+        'email_verified_at',
     ];
 
     public function transactions()
