@@ -5,10 +5,9 @@ require('alpinejs');
 $(document).ready(function() {
 
     $("button#add-to-cart").on("click", function(e) {
-        var quantity = e.currentTarget.previousElementSibling.value;
-        var product_id = e.currentTarget.nextElementSibling.innerHTML;
-        // var alert = $("#alert");
-        // var alert_div = $("#alert-div");
+        var quantity = e.currentTarget.previousElementSibling;
+        var product_id = e.currentTarget.nextElementSibling;
+        var available = $("#available-" + product_id.innerHTML);
 
         $.ajaxSetup({
             headers: {
@@ -20,16 +19,30 @@ $(document).ready(function() {
             type: "POST",
             dataType: 'JSON',
             data: {
-                'quantity': quantity,
-                'product_id': product_id,
+                'quantity': quantity.value,
+                'product_id': product_id.innerHTML,
             },
             success: function(data) {
+                // create alert of successful purchase
                 var alert = $("<div id='alert-div' class='sticky-top shadow alert alert-success alert-dismissible fade show m-3' role='alert'>"
-                    + "<p id='alert'>" + data + "</p>"
+                    + "<p id='alert'>" + data.msg + "</p>"
                     + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>"
                     + "<span aria-hidden='true'>&times;</span>"
                     + "</button></div>");
                 $("#alert-target").html(alert);
+
+                // update availability
+                if(data.new_quantity > 0)
+                {
+                    available.html(data.new_status + " - " + data.new_quantity + " left");
+                } else {
+                    available.html(data.new_status)
+                        .removeClass("green-text")
+                        .addClass("red-text");
+                    $("#quantity-" + product_id.innerHTML).remove();
+                    e.currentTarget.remove();
+                }
+
             },
             error: function(data) {
                 var msg = "Invalid purchase request";

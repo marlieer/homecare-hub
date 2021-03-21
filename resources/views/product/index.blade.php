@@ -15,26 +15,24 @@
                                  alt="{{ $product->name }}">
                             <div class="card-body">
                                 <h4 class="card-title">{{ $product->name }}</h4>
-                                <p class="card-subtitle {{ $product->status == 'available' ? 'green-text' : 'red-text' }}">
+                                <p id="available-{{ $product->id }}"
+                                   class="card-subtitle {{ $product->status == 'available' ? 'green-text' : 'red-text' }}">
                                     {{ $product->status }} {{ $product->status == 'available' ? ' - ' . $product->quantity . ' left' : ''}}
                                 </p>
                                 <p class="card-text">{{ $product->description }}</p>
 
                                 @if($product->status == 'available')
                                     <input
+                                        id="quantity-{{$product->id}}"
                                         type="number"
                                         class="d-inline w-25 form-control"
                                         value="1"
-                                    min="0"
-                                    max="{{ $product->quantity }}"/>
+                                        min="0"
+                                        max="{{ $product->quantity }}"/>
                                     <button class="btn btn-info"
                                             type="button" id="add-to-cart">Buy Now
                                     </button>
                                     <p class="hidden">{{ $product->id }}</p>
-                                @else
-                                    <button class="btn btn-outline-dark disabled"
-                                            type="button">Out of stock
-                                    </button>
                                 @endif
                             </div>
                         </div>
