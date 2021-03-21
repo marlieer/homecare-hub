@@ -10,7 +10,9 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'quantity'
+        'quantity',
+        'products_id',
+        'users_id',
     ];
 
 
@@ -20,8 +22,8 @@ class Transaction extends Model
     }
 
 
-    public function products()
+    public function product()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }
