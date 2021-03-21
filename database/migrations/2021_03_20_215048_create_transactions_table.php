@@ -18,6 +18,8 @@ class CreateTransactionsTable extends Migration
             $table->integer('quantity');
             $table->bigInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('products_id');
+            $table->foreign('products_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }
