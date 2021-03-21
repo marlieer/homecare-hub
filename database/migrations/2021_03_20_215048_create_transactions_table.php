@@ -16,10 +16,10 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
-            $table->bigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
-            $table->bigInteger('products_id');
-            $table->foreign('products_id')->references('id')->on('products')->onDelete('cascade');
+            $table->bigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }

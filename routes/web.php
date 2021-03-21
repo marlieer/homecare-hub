@@ -20,13 +20,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 Route::middleware('auth')->group( function () {
     Route::resource('product', ProductController::class);
+    Route::resource('transaction', TransactionController::class);
 });
-Route::resource('transaction', TransactionController::class);
+
 
 require __DIR__.'/auth.php';
